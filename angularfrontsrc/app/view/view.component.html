@@ -1,0 +1,45 @@
+<table class="table caption-top">
+    <caption>List of users</caption>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone Num</th>
+        <th scope="col">Update Employee</th>
+        <th scope="col">Delete Employee</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+            @for (user of usersList; track user.id) {
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.address}}</td>                   
+                    <td>{{user.phoneNum}}</td>
+                    <td><button type="button" class="btn btn-link" (click)="onUpdateClicked()">Update</button></td>
+                    <td><button type="button" class="btn btn-link" (click)="onDeleteClicked(user)">Delete</button></td>
+                  </tr>
+              }
+           
+       
+    
+    </tbody>
+  </table>
+  @if (editUser)
+  {
+    <app-add ></app-add>
+}
+@if (deleteUserConfirm)
+{
+  
+  <app-delete [usertodelete]="usertoDelete" (ondeleteConfirmation)="deleteUserOnConfirmation($event)" ></app-delete>
+}
+ 
+  
+
